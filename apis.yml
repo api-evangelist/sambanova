@@ -1,0 +1,152 @@
+aid: sambanova
+name: SambaNova
+description: >-
+  SambaNova Systems designs the SN-series Reconfigurable Dataflow Unit (RDU)
+  AI chips and operates SambaCloud, a managed inference platform serving
+  open-source models including the DeepSeek, Llama, Gemma, MiniMax, and
+  gpt-oss families. The SambaCloud API is OpenAI-compatible and is consumed
+  through first-party Python and TypeScript SDKs as well as the SambaNova
+  AI Starter Kit collection on GitHub. SambaNova additionally ships
+  SambaStack as an integrated chips-to-model on-prem appliance, SambaManaged
+  managed services, and SambaRack rack-scale systems. The company emphasizes
+  sovereign AI partnerships in Australia, Europe, and the UK and a recently
+  announced heterogeneous inference collaboration with Intel.
+type: Index
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - AI Inference
+  - Large Language Models
+  - Dataflow
+  - Hardware
+  - Cloud
+  - OpenAI Compatible
+  - Sovereign AI
+  - SDK
+  - Accelerator
+  - Open Source
+url: https://raw.githubusercontent.com/api-evangelist/sambanova/refs/heads/main/apis.yml
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.20'
+apis:
+  - aid: sambanova:sambacloud-api
+    name: SambaCloud API
+    description: >-
+      The SambaCloud API exposes OpenAI-compatible chat completions over
+      SambaNova's RDU-accelerated infrastructure. It serves multiple open
+      model families including DeepSeek V3, Llama 3.3 and Llama 4, Gemma 3,
+      MiniMax, and gpt-oss, with text and vision capabilities depending on
+      the model. The API is consumed via the sambanova-python and
+      sambanova-typescript SDKs and through OpenAI client libraries.
+    humanURL: https://docs.sambanova.ai
+    baseURL: https://api.sambanova.ai/v1
+    tags:
+      - Inference
+      - LLM
+      - Chat Completions
+      - OpenAI Compatible
+      - Multimodal
+      - REST
+    properties:
+      - type: Documentation
+        url: https://docs.sambanova.ai
+      - type: GettingStarted
+        url: https://docs.sambanova.ai/cloud/docs/get-started
+      - type: Developer Portal
+        url: https://cloud.sambanova.ai
+      - type: SDK
+        url: https://github.com/sambanova/sambanova-python
+      - type: SDK
+        url: https://github.com/sambanova/sambanova-typescript
+      - type: StarterKits
+        url: https://github.com/sambanova/ai-starter-kit
+    features:
+      - name: OpenAI-Compatible Endpoints
+        description: >-
+          Chat completions surface compatible with standard OpenAI SDKs
+          for rapid migration of existing applications.
+      - name: High-Throughput RDU Inference
+        description: >-
+          Backed by SN50 RDU silicon optimized for tokens-per-watt on
+          agentic and reasoning workloads.
+      - name: Open-Weight Model Catalog
+        description: >-
+          Curated catalog covering DeepSeek V3.1/V3.2, Llama 3.3 70B,
+          Llama 4 Maverick, Gemma 3 12B, MiniMax M2.7, and gpt-oss 120B.
+      - name: Vision and Multimodal Models
+        description: >-
+          Llama 4 Maverick and Gemma 3 endpoints support text plus image
+          inputs for multimodal applications.
+      - name: Custom Checkpoints
+        description: >-
+          SambaStack feature for deploying customer fine-tuned model
+          checkpoints onto RDU silicon.
+      - name: Sovereign AI Deployment
+        description: >-
+          Regional partner deployments across Australia, Europe, and the
+          UK for data-residency-sensitive customers.
+      - name: AI Starter Kits
+        description: >-
+          Curated example applications and notebooks for RAG, agents,
+          function calling, and document understanding.
+    useCases:
+      - name: Agentic Inference Workloads
+        description: >-
+          Run long-running, tool-using agent loops on hardware tuned for
+          tokens-per-watt efficiency.
+      - name: Retrieval-Augmented Generation
+        description: >-
+          Build enterprise RAG pipelines using starter kits and OpenAI
+          client compatibility.
+      - name: Sovereign and Regulated AI
+        description: >-
+          Deploy in-region or on-prem for finance, government, and
+          regulated enterprise workloads.
+      - name: Reasoning and Code Generation
+        description: >-
+          Serve DeepSeek and gpt-oss reasoning models at high throughput
+          for coding and research assistants.
+      - name: Vision Document Understanding
+        description: >-
+          Process documents, images, and charts via multimodal Llama and
+          Gemma endpoints.
+    integrations:
+      - name: OpenAI SDK
+      - name: LangChain
+      - name: LlamaIndex
+      - name: Hugging Face
+      - name: Intel
+      - name: AWS
+      - name: n8n
+      - name: Vercel AI SDK
+    authentication:
+      - type: API Key
+        description: >-
+          Authorization Bearer token issued from the /apis dashboard on
+          cloud.sambanova.ai.
+common:
+  - type: Website
+    url: https://sambanova.ai
+  - type: Documentation
+    url: https://docs.sambanova.ai
+  - type: Developer Portal
+    url: https://cloud.sambanova.ai
+  - type: Community
+    url: https://community.sambanova.ai
+  - type: GitHubOrganization
+    url: https://github.com/sambanova
+  - type: StarterKits
+    url: https://github.com/sambanova/ai-starter-kit
+  - type: Hardware
+    url: https://sambanova.ai/products/sn50-rdu
+  - type: Blog
+    url: https://sambanova.ai/blog
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/sambanova-systems
+  - type: Twitter
+    url: https://twitter.com/SambaNovaAI
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
