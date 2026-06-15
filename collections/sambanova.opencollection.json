@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SambaCloud API",
+    "version": "2026-05-23"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Create a chat completion",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.sambanova.ai/v1/chat/completions",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "OpenAI-compatible chat completions endpoint. Accepts a list of\nmessages and returns a model completion. Supports streaming via\n`stream: true` with `text/event-stream` responses.\n"
+    },
+    {
+      "info": {
+        "name": "Create a text completion",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.sambanova.ai/v1/completions",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "OpenAI-compatible text completions endpoint."
+    },
+    {
+      "info": {
+        "name": "Create embeddings",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.sambanova.ai/v1/embeddings",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "OpenAI-compatible embeddings endpoint for supported models."
+    },
+    {
+      "info": {
+        "name": "List models",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.sambanova.ai/v1/models"
+      },
+      "docs": "Lists models currently available on SambaCloud."
+    }
+  ],
+  "bundled": true
+}
