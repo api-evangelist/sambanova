@@ -54,11 +54,11 @@ apis:
         url: https://docs.sambanova.ai
       - type: GettingStarted
         url: https://docs.sambanova.ai/cloud/docs/get-started
-      - type: Developer Portal
+      - type: DeveloperPortal
         url: https://cloud.sambanova.ai
-      - type: SDK
+      - type: SDKs
         url: https://github.com/sambanova/sambanova-python
-      - type: SDK
+      - type: SDKs
         url: https://github.com/sambanova/sambanova-typescript
       - type: StarterKits
         url: https://github.com/sambanova/ai-starter-kit
@@ -131,7 +131,7 @@ common:
     url: https://sambanova.ai
   - type: Documentation
     url: https://docs.sambanova.ai
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://cloud.sambanova.ai
   - type: Community
     url: https://community.sambanova.ai
