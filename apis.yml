@@ -127,6 +127,12 @@ apis:
           Authorization Bearer token issued from the /apis dashboard on
           cloud.sambanova.ai.
 common:
+  - type: TrustCenter
+    url: security/sambanova-trust-center.yml
+  - type: DomainSecurity
+    url: security/sambanova-domain-security.yml
+  - type: Authentication
+    url: authentication/sambanova-authentication.yml
   - type: Website
     url: https://sambanova.ai
   - type: Documentation

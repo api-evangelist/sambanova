@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sambanova-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: |-
+    SambaCloud API key issued from the /apis dashboard on
+    cloud.sambanova.ai, sent as `Authorization: Bearer <key>`.
+  sources:
+  - openapi/sambanova-openapi.yml
