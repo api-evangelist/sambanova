@@ -1,0 +1,73 @@
+openapi: 3.1.0
+info:
+  title: SambaCloud Chat Models API
+  description: 'SambaCloud is SambaNova''s managed inference API for open-source models
+
+    (DeepSeek, Llama, Gemma, MiniMax, gpt-oss). The HTTP surface is
+
+    OpenAI-compatible: chat completions, completions, embeddings, and
+
+    model listing endpoints all match the OpenAI shape so existing OpenAI
+
+    clients can be pointed at `https://api.sambanova.ai/v1` by changing
+
+    base URL and API key.
+
+    '
+  version: '2026-05-23'
+  contact:
+    name: SambaNova
+    url: https://docs.sambanova.ai
+servers:
+- url: https://api.sambanova.ai/v1
+  description: SambaCloud production
+security:
+- bearerAuth: []
+tags:
+- name: Models
+paths:
+  /models:
+    get:
+      summary: List models
+      description: Lists models currently available on SambaCloud.
+      operationId: listModels
+      responses:
+        '200':
+          description: Model list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    example: list
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Model'
+      tags:
+      - Models
+components:
+  schemas:
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: model
+        created:
+          type: integer
+        owned_by:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'SambaCloud API key issued from the /apis dashboard on
+
+        cloud.sambanova.ai, sent as `Authorization: Bearer <key>`.
+
+        '

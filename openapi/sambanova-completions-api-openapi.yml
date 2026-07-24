@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: SambaCloud Chat Completions API
+  description: 'SambaCloud is SambaNova''s managed inference API for open-source models
+
+    (DeepSeek, Llama, Gemma, MiniMax, gpt-oss). The HTTP surface is
+
+    OpenAI-compatible: chat completions, completions, embeddings, and
+
+    model listing endpoints all match the OpenAI shape so existing OpenAI
+
+    clients can be pointed at `https://api.sambanova.ai/v1` by changing
+
+    base URL and API key.
+
+    '
+  version: '2026-05-23'
+  contact:
+    name: SambaNova
+    url: https://docs.sambanova.ai
+servers:
+- url: https://api.sambanova.ai/v1
+  description: SambaCloud production
+security:
+- bearerAuth: []
+tags:
+- name: Completions
+paths:
+  /completions:
+    post:
+      summary: Create a text completion
+      description: OpenAI-compatible text completions endpoint.
+      operationId: createCompletion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - model
+              - prompt
+              properties:
+                model:
+                  type: string
+                prompt:
+                  oneOf:
+                  - type: string
+                  - type: array
+                    items:
+                      type: string
+                max_tokens:
+                  type: integer
+                temperature:
+                  type: number
+                top_p:
+                  type: number
+                stream:
+                  type: boolean
+                stop:
+                  oneOf:
+                  - type: string
+                  - type: array
+                    items:
+                      type: string
+      responses:
+        '200':
+          description: Text completion result
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      tags:
+      - Completions
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'SambaCloud API key issued from the /apis dashboard on
+
+        cloud.sambanova.ai, sent as `Authorization: Bearer <key>`.
+
+        '
