@@ -12,9 +12,22 @@ description: >-
   sovereign AI partnerships in Australia, Europe, and the UK and a recently
   announced heterogeneous inference collaboration with Intel.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sambanova.png
 tags:
   - AI Inference
   - Large Language Models
@@ -31,101 +44,122 @@ created: '2026-05-23'
 modified: '2026-05-23'
 specificationVersion: '0.20'
 apis:
-  - aid: sambanova:sambacloud-api
-    name: SambaCloud API
+- aid: sambanova:sambacloud-api
+  name: SambaCloud API
+  description: >-
+    The SambaCloud API exposes OpenAI-compatible chat completions over SambaNova's RDU-accelerated infrastructure.
+    It serves multiple open model families including DeepSeek V3, Llama 3.3 and Llama 4, Gemma 3, MiniMax,
+    and gpt-oss, with text and vision capabilities depending on the model. The API is consumed via the
+    sambanova-python and sambanova-typescript SDKs and through OpenAI client libraries.
+  humanURL: https://docs.sambanova.ai
+  baseURL: https://api.sambanova.ai/v1
+  tags:
+  - Inference
+  - LLM
+  - Chat Completions
+  - OpenAI Compatible
+  - Multimodal
+  - REST
+  properties:
+  - type: Documentation
+    url: https://docs.sambanova.ai
+  - type: GettingStarted
+    url: https://docs.sambanova.ai/cloud/docs/get-started
+  - type: DeveloperPortal
+    url: https://cloud.sambanova.ai
+  - type: SDKs
+    url: https://github.com/sambanova/sambanova-python
+  - type: SDKs
+    url: https://github.com/sambanova/sambanova-typescript
+  - type: StarterKits
+    url: https://github.com/sambanova/ai-starter-kit
+  features:
+  - name: OpenAI-Compatible Endpoints
     description: >-
-      The SambaCloud API exposes OpenAI-compatible chat completions over
-      SambaNova's RDU-accelerated infrastructure. It serves multiple open
-      model families including DeepSeek V3, Llama 3.3 and Llama 4, Gemma 3,
-      MiniMax, and gpt-oss, with text and vision capabilities depending on
-      the model. The API is consumed via the sambanova-python and
-      sambanova-typescript SDKs and through OpenAI client libraries.
-    humanURL: https://docs.sambanova.ai
-    baseURL: https://api.sambanova.ai/v1
-    tags:
-      - Inference
-      - LLM
-      - Chat Completions
-      - OpenAI Compatible
-      - Multimodal
-      - REST
-    properties:
-      - type: Documentation
-        url: https://docs.sambanova.ai
-      - type: GettingStarted
-        url: https://docs.sambanova.ai/cloud/docs/get-started
-      - type: DeveloperPortal
-        url: https://cloud.sambanova.ai
-      - type: SDKs
-        url: https://github.com/sambanova/sambanova-python
-      - type: SDKs
-        url: https://github.com/sambanova/sambanova-typescript
-      - type: StarterKits
-        url: https://github.com/sambanova/ai-starter-kit
-    features:
-      - name: OpenAI-Compatible Endpoints
-        description: >-
-          Chat completions surface compatible with standard OpenAI SDKs
-          for rapid migration of existing applications.
-      - name: High-Throughput RDU Inference
-        description: >-
-          Backed by SN50 RDU silicon optimized for tokens-per-watt on
-          agentic and reasoning workloads.
-      - name: Open-Weight Model Catalog
-        description: >-
-          Curated catalog covering DeepSeek V3.1/V3.2, Llama 3.3 70B,
-          Llama 4 Maverick, Gemma 3 12B, MiniMax M2.7, and gpt-oss 120B.
-      - name: Vision and Multimodal Models
-        description: >-
-          Llama 4 Maverick and Gemma 3 endpoints support text plus image
-          inputs for multimodal applications.
-      - name: Custom Checkpoints
-        description: >-
-          SambaStack feature for deploying customer fine-tuned model
-          checkpoints onto RDU silicon.
-      - name: Sovereign AI Deployment
-        description: >-
-          Regional partner deployments across Australia, Europe, and the
-          UK for data-residency-sensitive customers.
-      - name: AI Starter Kits
-        description: >-
-          Curated example applications and notebooks for RAG, agents,
-          function calling, and document understanding.
-    useCases:
-      - name: Agentic Inference Workloads
-        description: >-
-          Run long-running, tool-using agent loops on hardware tuned for
-          tokens-per-watt efficiency.
-      - name: Retrieval-Augmented Generation
-        description: >-
-          Build enterprise RAG pipelines using starter kits and OpenAI
-          client compatibility.
-      - name: Sovereign and Regulated AI
-        description: >-
-          Deploy in-region or on-prem for finance, government, and
-          regulated enterprise workloads.
-      - name: Reasoning and Code Generation
-        description: >-
-          Serve DeepSeek and gpt-oss reasoning models at high throughput
-          for coding and research assistants.
-      - name: Vision Document Understanding
-        description: >-
-          Process documents, images, and charts via multimodal Llama and
-          Gemma endpoints.
-    integrations:
-      - name: OpenAI SDK
-      - name: LangChain
-      - name: LlamaIndex
-      - name: Hugging Face
-      - name: Intel
-      - name: AWS
-      - name: n8n
-      - name: Vercel AI SDK
-    authentication:
-      - type: API Key
-        description: >-
-          Authorization Bearer token issued from the /apis dashboard on
-          cloud.sambanova.ai.
+      Chat completions surface compatible with standard OpenAI SDKs for rapid migration of existing applications.
+  - name: High-Throughput RDU Inference
+    description: >-
+      Backed by SN50 RDU silicon optimized for tokens-per-watt on agentic and reasoning workloads.
+  - name: Open-Weight Model Catalog
+    description: >-
+      Curated catalog covering DeepSeek V3.1/V3.2, Llama 3.3 70B, Llama 4 Maverick, Gemma 3 12B, MiniMax
+      M2.7, and gpt-oss 120B.
+  - name: Vision and Multimodal Models
+    description: >-
+      Llama 4 Maverick and Gemma 3 endpoints support text plus image inputs for multimodal applications.
+  - name: Custom Checkpoints
+    description: SambaStack feature for deploying customer fine-tuned model checkpoints onto RDU silicon.
+  - name: Sovereign AI Deployment
+    description: >-
+      Regional partner deployments across Australia, Europe, and the UK for data-residency-sensitive customers.
+  - name: AI Starter Kits
+    description: >-
+      Curated example applications and notebooks for RAG, agents, function calling, and document understanding.
+  useCases:
+  - name: Agentic Inference Workloads
+    description: >-
+      Run long-running, tool-using agent loops on hardware tuned for tokens-per-watt efficiency.
+  - name: Retrieval-Augmented Generation
+    description: Build enterprise RAG pipelines using starter kits and OpenAI client compatibility.
+  - name: Sovereign and Regulated AI
+    description: Deploy in-region or on-prem for finance, government, and regulated enterprise workloads.
+  - name: Reasoning and Code Generation
+    description: >-
+      Serve DeepSeek and gpt-oss reasoning models at high throughput for coding and research assistants.
+  - name: Vision Document Understanding
+    description: Process documents, images, and charts via multimodal Llama and Gemma endpoints.
+  integrations:
+  - name: OpenAI SDK
+  - name: LangChain
+  - name: LlamaIndex
+  - name: Hugging Face
+  - name: Intel
+  - name: AWS
+  - name: n8n
+  - name: Vercel AI SDK
+  authentication:
+  - type: API Key
+    description: Authorization Bearer token issued from the /apis dashboard on cloud.sambanova.ai.
+- aid: sambanova:sambanova-chat-api
+  name: SambaNova Chat API
+  description: The Chat API from SambaNova — 1 operation(s) for chat.
+  humanURL: https://docs.sambanova.ai
+  baseURL: https://api.sambanova.ai/v1
+  tags:
+  - Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/sambanova-chat-api-openapi.yml
+- aid: sambanova:sambanova-completions-api
+  name: SambaNova Completions API
+  description: The Completions API from SambaNova — 1 operation(s) for completions.
+  humanURL: https://docs.sambanova.ai
+  baseURL: https://api.sambanova.ai/v1
+  tags:
+  - Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/sambanova-completions-api-openapi.yml
+- aid: sambanova:sambanova-embeddings-api
+  name: SambaNova Embeddings API
+  description: The Embeddings API from SambaNova — 1 operation(s) for embeddings.
+  humanURL: https://docs.sambanova.ai
+  baseURL: https://api.sambanova.ai/v1
+  tags:
+  - Embeddings
+  properties:
+  - type: OpenAPI
+    url: openapi/sambanova-embeddings-api-openapi.yml
+- aid: sambanova:sambanova-models-api
+  name: SambaNova Models API
+  description: The Models API from SambaNova — 1 operation(s) for models.
+  humanURL: https://docs.sambanova.ai
+  baseURL: https://api.sambanova.ai/v1
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/sambanova-models-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/sambanova-agentic-access.yml
