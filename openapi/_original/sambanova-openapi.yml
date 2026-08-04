@@ -1,0 +1,265 @@
+openapi: 3.1.0
+info:
+  title: SambaCloud API
+  description: |
+    SambaCloud is SambaNova's managed inference API for open-source models
+    (DeepSeek, Llama, Gemma, MiniMax, gpt-oss). The HTTP surface is
+    OpenAI-compatible: chat completions, completions, embeddings, and
+    model listing endpoints all match the OpenAI shape so existing OpenAI
+    clients can be pointed at `https://api.sambanova.ai/v1` by changing
+    base URL and API key.
+  version: "2026-05-23"
+  contact:
+    name: SambaNova
+    url: https://docs.sambanova.ai
+servers:
+  - url: https://api.sambanova.ai/v1
+    description: SambaCloud production
+security:
+  - bearerAuth: []
+paths:
+  /chat/completions:
+    post:
+      summary: Create a chat completion
+      description: |
+        OpenAI-compatible chat completions endpoint. Accepts a list of
+        messages and returns a model completion. Supports streaming via
+        `stream: true` with `text/event-stream` responses.
+      operationId: createChatCompletion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: Chat completion result (or SSE stream when streaming).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+            text/event-stream:
+              schema:
+                type: string
+                description: Server-Sent Events stream of completion chunks.
+        '400':
+          description: Invalid request
+        '401':
+          description: Missing or invalid API key
+        '429':
+          description: Rate limited
+  /completions:
+    post:
+      summary: Create a text completion
+      description: OpenAI-compatible text completions endpoint.
+      operationId: createCompletion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - model
+                - prompt
+              properties:
+                model:
+                  type: string
+                prompt:
+                  oneOf:
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
+                max_tokens:
+                  type: integer
+                temperature:
+                  type: number
+                top_p:
+                  type: number
+                stream:
+                  type: boolean
+                stop:
+                  oneOf:
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
+      responses:
+        '200':
+          description: Text completion result
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /embeddings:
+    post:
+      summary: Create embeddings
+      description: OpenAI-compatible embeddings endpoint for supported models.
+      operationId: createEmbeddings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - model
+                - input
+              properties:
+                model:
+                  type: string
+                input:
+                  oneOf:
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
+                encoding_format:
+                  type: string
+                  enum: [float, base64]
+      responses:
+        '200':
+          description: Embeddings response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /models:
+    get:
+      summary: List models
+      description: Lists models currently available on SambaCloud.
+      operationId: listModels
+      responses:
+        '200':
+          description: Model list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    example: list
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Model'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: |
+        SambaCloud API key issued from the /apis dashboard on
+        cloud.sambanova.ai, sent as `Authorization: Bearer <key>`.
+  schemas:
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: model
+        created:
+          type: integer
+        owned_by:
+          type: string
+    ChatMessage:
+      type: object
+      required:
+        - role
+        - content
+      properties:
+        role:
+          type: string
+          enum: [system, user, assistant, tool]
+        content:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: object
+                additionalProperties: true
+        name:
+          type: string
+        tool_call_id:
+          type: string
+    ChatCompletionRequest:
+      type: object
+      required:
+        - model
+        - messages
+      properties:
+        model:
+          type: string
+          description: |
+            Model identifier such as DeepSeek-V3.1, Llama-3.3-70B-Instruct,
+            Llama-4-Maverick-17B-128E-Instruct, or gpt-oss-120b.
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        temperature:
+          type: number
+        top_p:
+          type: number
+        max_tokens:
+          type: integer
+        stream:
+          type: boolean
+        stop:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        tools:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        tool_choice:
+          oneOf:
+            - type: string
+            - type: object
+              additionalProperties: true
+        response_format:
+          type: object
+          additionalProperties: true
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                $ref: '#/components/schemas/ChatMessage'
+              finish_reason:
+                type: string
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer

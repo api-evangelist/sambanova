@@ -1,0 +1,20 @@
+{
+  "provider": "sambanova",
+  "sources": [
+    "sambanova-chat-api-openapi.yml",
+    "sambanova-completions-api-openapi.yml",
+    "sambanova-embeddings-api-openapi.yml",
+    "sambanova-models-api-openapi.yml"
+  ],
+  "outputs": [
+    "sambanova-chat-api-openapi.yml",
+    "sambanova-completions-api-openapi.yml",
+    "sambanova-embeddings-api-openapi.yml",
+    "sambanova-models-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
