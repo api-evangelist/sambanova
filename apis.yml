@@ -31,6 +31,17 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sambanova.
 tags:
   - AI Inference
   - Large Language Models
+  - Dataflows
+  - Hardware
+  - Cloud
+  - OpenAI-Compatible
+  - Sovereign AI
+  - SDK
+  - Accelerator
+  - Open-Source
+tags_raw:
+  - AI Inference
+  - Large Language Models
   - Dataflow
   - Hardware
   - Cloud
@@ -54,6 +65,13 @@ apis:
   humanURL: https://docs.sambanova.ai
   baseURL: https://api.sambanova.ai/v1
   tags:
+  - Inference
+  - LLM
+  - Chat Completions
+  - OpenAI-Compatible
+  - Multi-Modal
+  - REST
+  tags_raw:
   - Inference
   - LLM
   - Chat Completions
